@@ -22,15 +22,42 @@ function selectHarmony(hslObject) {
     arrOfColors[4].h = Math.floor(Math.random() * 360);
     return arrOfColors;
   } else if (harmony === "monochromatic") {
-    monochromaticColors();
+    console.log("monochromatic");
+    const arrOfColors = [];
+    for (let i = 1; i < 5; i++) {
+      arrOfColors[i] = Object.assign({}, hslObject);
+    }
+    arrOfColors[1].s = Math.floor(Math.random() * 360);
+    arrOfColors[2].s = Math.floor(Math.random() * 360);
+    arrOfColors[3].l = Math.floor(Math.random() * 360);
+    arrOfColors[4].l = Math.floor(Math.random() * 360);
+    return arrOfColors;
   } else if (harmony === "triad") {
-    triadColors();
+    console.log("triad");
   } else if (harmony === "complementary") {
-    complementaryColors();
+    console.log("complementary");
   } else if (harmony === "compound") {
-    compoundColors();
+    console.log("compound");
+    const arrOfColors = [];
+    for (let i = 1; i < 5; i++) {
+      arrOfColors[i] = Object.assign({}, hslObject);
+    }
+    arrOfColors[1].h = Math.floor(Math.random() * 360);
+    arrOfColors[2].h = Math.floor(Math.random() * 360);
+    arrOfColors[3].s = Math.floor(Math.random() * 360);
+    arrOfColors[4].l = Math.floor(Math.random() * 360);
+    return arrOfColors;
   } else if (harmony === "shades") {
-    shadesColors();
+    console.log("shades");
+    const arrOfColors = [];
+    for (let i = 1; i < 5; i++) {
+      arrOfColors[i] = Object.assign({}, hslObject);
+    }
+    arrOfColors[1].l = Math.floor(Math.random() * 360);
+    arrOfColors[2].l = Math.floor(Math.random() * 360);
+    arrOfColors[3].l = Math.floor(Math.random() * 360);
+    arrOfColors[4].l = Math.floor(Math.random() * 360);
+    return arrOfColors;
   }
 }
 
