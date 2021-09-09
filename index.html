@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Palette Designer</title>
+    <link rel="stylesheet" href="colorpalette_style.css" />
+  </head>
+  <body>
+    <label for="colorwheel">Select a color: </label>
+    <input type="color" id="colorwheel" value="" />
+    <br />
+    <label for="harmony">Select a harmony: </label>
+    <select name="harmony" id="harmony">
+      <option value="analogous">Analogous</option>
+      <option value="monochromatic">Monochromatic</option>
+      <option value="triad">Triad</option>
+      <option value="complementary">Complementary</option>
+      <option value="compound">Compound</option>
+      <option value="shades">Shades</option>
+    </select>
+    <div id="wrapper">
+      <div id="colordisplay0" class="block">
+        <div id="color0"></div>
+        <div class="infowrapper">
+          <div id="hexDiv0"></div>
+          <div id="rgbDiv0"></div>
+          <div id="hslDiv0"></div>
+        </div>
+      </div>
+      <div id="colordisplay1">
+        <div id="color1"></div>
+        <div class="infowrapper">
+          <div id="hexDiv1"></div>
+          <div id="rgbDiv1"></div>
+          <div id="hslDiv1"></div>
+        </div>
+      </div>
+      <div id="colordisplay2">
+        <div id="color2"></div>
+        <div class="infowrapper">
+          <div id="hexDiv2"></div>
+          <div id="rgbDiv2"></div>
+          <div id="hslDiv2"></div>
+        </div>
+      </div>
+      <div id="colordisplay3">
+        <div id="color3"></div>
+        <div class="infowrapper">
+          <div id="hexDiv3"></div>
+          <div id="rgbDiv3"></div>
+          <div id="hslDiv3"></div>
+        </div>
+      </div>
+      <div id="colordisplay4">
+        <div id="color4"></div>
+        <div class="infowrapper">
+          <div id="hexDiv4"></div>
+          <div id="rgbDiv4"></div>
+          <div id="hslDiv4"></div>
+        </div>
+      </div>
+    </div>
+    <script src="cpd.js"></script>
+  </body>
+</html>
