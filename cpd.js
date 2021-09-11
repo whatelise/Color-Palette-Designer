@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", selectColor());
 // selectHarmony();
 function selectColor() {
   const colorWheel = document.querySelector("#colorwheel");
-  colorWheel.addEventListener("input", findHex);
+  colorWheel.addEventListener("input", controlCenter);
 }
 function selectHarmony(hslObject) {
   const harmony = document.querySelector("#harmony").value;
@@ -34,8 +34,43 @@ function selectHarmony(hslObject) {
     return arrOfColors;
   } else if (harmony === "triad") {
     console.log("triad");
+    const arrOfColors = [];
+    for (let i = 1; i < 5; i++) {
+      arrOfColors[i] = Object.assign({}, hslObject);
+    }
+    let newh = hslObject.h + 120;
+    let newh1 = hslObject.h + 60;
+    if (newh >= 360) {
+      arrOfColors[1].h = newh %= 360;
+      arrOfColors[2].h = newh1 %= 360;
+      arrOfColors[3].h = newh %= 360;
+      arrOfColors[4].h = newh1 %= 360;
+    } else {
+      arrOfColors[1].h = newh;
+      arrOfColors[2].h = newh1;
+      arrOfColors[3].h = newh;
+      arrOfColors[4].h = newh1;
+      arrOfColors[3].l = Math.floor(Math.random() * 360);
+      arrOfColors[4].l = Math.floor(Math.random() * 360);
+    }
+    return arrOfColors;
   } else if (harmony === "complementary") {
     console.log("complementary");
+    const arrOfColors = [];
+    for (let i = 1; i < 5; i++) {
+      arrOfColors[i] = Object.assign({}, hslObject);
+    }
+    let newh = hslObject.h + 180;
+    if (newh >= 360) {
+      arrOfColors[1].h = newh %= 360;
+    } else {
+      arrOfColors[1].h = newh;
+    }
+    arrOfColors[2].h = newh - 20;
+    arrOfColors[3].h = newh + 90;
+    arrOfColors[4].h = newh - 90;
+    console.log(newh);
+    return arrOfColors;
   } else if (harmony === "compound") {
     console.log("compound");
     const arrOfColors = [];
@@ -60,11 +95,8 @@ function selectHarmony(hslObject) {
     return arrOfColors;
   }
 }
-
-function findHex() {
-  const hexCode = document.querySelector("input").value;
-  console.log(hexCode);
-
+function controlCenter() {
+  const hexCode = findHex();
   const RGB = hexToRgb(hexCode);
 
   const hsl = rgbToHsl(RGB);
@@ -73,6 +105,7 @@ function findHex() {
   let l = hsl.l;
   let hslObject = { h, s, l };
   rgbToHex(RGB);
+
   const hslArray = selectHarmony(hslObject);
   let rgbArray = [];
   hslArray.forEach((e) => {
@@ -85,12 +118,18 @@ function findHex() {
     let hexObj = rgbToHex(e);
     hexArray.push(hexObj);
   });
+
   console.log(hexArray);
   console.log(rgbArray);
   showHex(hexCode, hexArray);
   showColors(hexCode, hexArray);
   showHsl(hsl, hslArray);
   showRgb(RGB, rgbArray);
+}
+
+function findHex() {
+  const hexCode = document.querySelector("input").value;
+  return hexCode;
 }
 function hexToRgb(hexCode) {
   let red = hexCode.substring(1, 3);
@@ -258,20 +297,4 @@ function bringIntoInterval(number, max) {
   while (number < 0) {
     number = number + max;
   }
-}
-
-function complementaryColors() {
-  console.log("complementary");
-}
-function compoundColors() {
-  console.log("compound");
-}
-function triadColors() {
-  console.log("triad");
-}
-function shadesColors() {
-  console.log("shades");
-}
-function monochromaticColors() {
-  console.log("monochromatic");
 }
